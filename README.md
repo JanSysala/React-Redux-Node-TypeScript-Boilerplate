@@ -9,6 +9,10 @@
 
 ## Usage
 ```
+Change config/config.env MONGO_URI to your DB URI. 
+```
+
+```
  npm install
  cd client npm install
  cd ..
