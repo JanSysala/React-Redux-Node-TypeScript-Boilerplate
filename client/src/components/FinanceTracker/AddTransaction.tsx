@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
-import {addTransaction} from "../../actions";
+import {addTransaction, resetError} from "../../actions";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -49,6 +49,7 @@ export const AddTransaction: React.FC = () => {
     // }, [transactions, transactions.length]);
 
     const onSubmit = e => {
+        dispatch(resetError());
         e.preventDefault();
 
         const transaction = {

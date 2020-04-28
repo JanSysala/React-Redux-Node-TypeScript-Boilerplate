@@ -53,7 +53,7 @@ export const TransactionsList: React.FC = () => {
                 </ListItemAvatar>
                 <ListItemText primary={`${transaction.text} : $${transaction.amount}`}
                               secondary={transaction.createdAt}/>
-            </ListItem>K
+            </ListItem>
         </React.Fragment>
     ));
 

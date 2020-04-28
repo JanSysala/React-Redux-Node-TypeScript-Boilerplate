@@ -23,6 +23,10 @@ export interface CatchErrorsAction {
     payload: string;
 }
 
+export interface ResetErrorsAction {
+    type: ActionTypes.resetErrors;
+}
+
 export const getTransactions = () => {
     return async (dispatch: Dispatch) => {
         try {
@@ -47,6 +51,14 @@ export const deleteTransaction = (id: Transaction["_id"]) => {
             payload: id
         });
     };
+};
+
+export const resetError = () => {
+    return (dispatch: Dispatch) => {
+        dispatch({
+            type: ActionTypes.resetErrors,
+        });
+    }
 };
 
 export const addTransaction = (transaction: AddTransaction) => {

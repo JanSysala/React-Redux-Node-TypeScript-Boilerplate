@@ -18,6 +18,8 @@ export const errorsReducer = (state: string = '', action: Action) => {
     switch (action.type) {
         case ActionTypes.catchErrors:
             return action.payload
+        case ActionTypes.resetErrors:
+            return '';
         default:
             return state;
     }
