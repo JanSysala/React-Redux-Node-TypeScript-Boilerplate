@@ -13,3 +13,12 @@ export const transactionsReducer = (state: Transaction[] = [], action: Action) =
             return state;
     }
 };
+
+export const errorsReducer = (state: string = '', action: Action) => {
+    switch (action.type) {
+        case ActionTypes.catchErrors:
+            return action.payload
+        default:
+            return state;
+    }
+};

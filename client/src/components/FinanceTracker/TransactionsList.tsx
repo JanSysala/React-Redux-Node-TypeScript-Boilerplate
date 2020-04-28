@@ -3,6 +3,7 @@ import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {StoreState, Transaction} from "../../reducers";
 import {deleteTransaction, getTransactions} from "../../actions";
+import "./AddTransactions.scss"
 // Material-UI imports
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             width: '100%',
             maxWidth: 360,
-            backgroundColor: theme.palette.background.paper,
+            backgroundColor: theme.palette.background.paper
         },
     }),
 );
@@ -26,6 +27,8 @@ export const TransactionsList: React.FC = () => {
     const classes = useStyles();
     // redux hook that grabs a piece of the store (like mapStateToProps)
     const transactions = useSelector((state: StoreState) => state.transactions);
+    const error = useSelector((state: StoreState) => state.error);
+
     // redux hook to get dispatch function. this is the alternative to using connect() with no second argument
     // which gives dispatch passed into this component automatically as a prop.
     const dispatch = useDispatch();
@@ -36,8 +39,13 @@ export const TransactionsList: React.FC = () => {
 
     // create an array of buttons that dispatch the deleteTodo action onClick
     const curTransactions = transactions.map((transaction: Transaction) => (
-        <React.Fragment key={transaction._id}>
-            <ListItem onClick={() => dispatch(deleteTransaction(transaction._id))}>
+        <React.Fragment key={transaction._id}>.
+            <button
+                onClick={() => dispatch(deleteTransaction(transaction._id))}
+                className="button">
+                X
+            </button>
+            <ListItem>
                 <ListItemAvatar>
                     <Avatar>
                         <ImageIcon/>
@@ -45,12 +53,13 @@ export const TransactionsList: React.FC = () => {
                 </ListItemAvatar>
                 <ListItemText primary={`${transaction.text} : $${transaction.amount}`}
                               secondary={transaction.createdAt}/>
-            </ListItem>
+            </ListItem>K
         </React.Fragment>
     ));
 
     return (
         <>
+            <p>{error}</p>
             <List className={classes.root}>
                 {curTransactions}
             </List>

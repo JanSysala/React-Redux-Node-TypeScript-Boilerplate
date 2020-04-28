@@ -38,7 +38,6 @@ export const AddTransaction: React.FC = () => {
     const [amount, setAmount] = useState(0);
 
     // redux hook that grabs a piece of the store (like mapStateToProps)
-    // const transactions = useSelector((state: StoreState) => state.transactions);
     // redux hook to get dispatch function. this is the alternative to using connect() with no second argument
     // which gives dispatch passed into this component automatically as a prop.
     const dispatch = useDispatch();

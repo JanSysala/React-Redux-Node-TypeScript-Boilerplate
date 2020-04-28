@@ -18,15 +18,24 @@ export interface AddTransactionAction {
     payload: Transaction;
 }
 
+export interface CatchErrorsAction {
+    type: ActionTypes.catchErrors;
+    payload: string;
+}
+
 export const getTransactions = () => {
     return async (dispatch: Dispatch) => {
-        const response = await axios.get('/api/v1/transactions');
+        try {
+            const response = await axios.get('/api/v1/transactions');
 
-        dispatch({
-            type: ActionTypes.getTransactions,
-            payload: response.data.data
-        });
-    };
+            dispatch({
+                type: ActionTypes.getTransactions,
+                payload: response.data.data
+            });
+        } catch (err) {
+            console.log(err.response.data.error);
+        }
+    }
 };
 
 export const deleteTransaction = (id: Transaction["_id"]) => {
@@ -49,12 +58,17 @@ export const addTransaction = (transaction: AddTransaction) => {
             }
         }
 
-        const response = await axios.post('/api/v1/transactions', transaction, config);
-
-        dispatch({
-            type: ActionTypes.addTransaction,
-            payload: response.data.data
-        });
-    };
-
+        await axios.post('/api/v1/transactions', transaction, config)
+            .then((res) => {
+                dispatch({
+                    type: ActionTypes.addTransaction,
+                    payload: res.data.data
+                });
+            }).catch((err) => {
+                dispatch({
+                    type: ActionTypes.catchErrors,
+                    payload: err.response.data.error
+                });
+            })
+    }
 };
