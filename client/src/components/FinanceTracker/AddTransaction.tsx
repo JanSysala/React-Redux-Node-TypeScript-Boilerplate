@@ -74,7 +74,7 @@ export const AddTransaction: React.FC = () => {
                 value={amount}
                 className={classes.input}
                 placeholder="Amount"
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setAmount(parseInt(e.target.value))} // TODO: parseint breaks it when input is not a number
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setAmount(+e.target.value)}
                 inputProps={{'aria-label': 'Add transaction amount.'}}
             />
             <IconButton type="submit" className={classes.iconButton} aria-label="add">
