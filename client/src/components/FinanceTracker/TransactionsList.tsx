@@ -36,10 +36,11 @@ export const TransactionsList: React.FC = () => {
     useEffect(() => {
         dispatch(getTransactions());
     }, [dispatch])
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     // create an array of buttons that dispatch the deleteTodo action onClick
     const curTransactions = transactions.map((transaction: Transaction) => (
-        <React.Fragment key={transaction._id}>.
+        <React.Fragment key={transaction._id}>
             <button
                 onClick={() => dispatch(deleteTransaction(transaction._id))}
                 className="button">
@@ -52,7 +53,9 @@ export const TransactionsList: React.FC = () => {
                     </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={`${transaction.text} : $${transaction.amount}`}
-                              secondary={transaction.createdAt}/>
+                              secondary={`${new Date(transaction.createdAt).getDate()}.
+                              ${months[new Date(transaction.createdAt).getMonth()]}
+                              ${new Date(transaction.createdAt).getFullYear()}`}/>
             </ListItem>
         </React.Fragment>
     ));
