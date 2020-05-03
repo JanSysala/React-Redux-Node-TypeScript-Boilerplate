@@ -5,7 +5,6 @@
 > * Redux
 > * Node.js
 > * Axios
-> * Material-UI
 
 ## Usage
 ```
