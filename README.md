@@ -8,8 +8,15 @@
 
 ## Usage
 ```
-Change config/config.env MONGO_URI to your DB URI. 
+Create config/config.env file with these variables:
 ```
+```
+NODE_ENV=production
+PORT=5000
+MONGO_URI=
+```
+
+## Run & Build
 
 ```
  npm install
