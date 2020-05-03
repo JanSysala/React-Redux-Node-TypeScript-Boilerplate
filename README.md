@@ -13,7 +13,7 @@ Create config/config.env file with these variables:
 ```
 NODE_ENV=production
 PORT=5000
-MONGO_URI=
+MONGO_URI=<YOUR CONNECTION STRING>
 ```
 
 ## Run & Build
