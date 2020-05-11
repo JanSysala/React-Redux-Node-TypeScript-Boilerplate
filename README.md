@@ -1,4 +1,4 @@
-# Expense Tracker
+# Expense Tracker (MERN Stack + TS boilerplate)
 > Full stack expense tracker build with:
 > * React
 > * Typescript
